@@ -1,0 +1,105 @@
+{{!-- This is the post loop - each post will be output using this markup --}}
+{{#foreach posts}}
+{{#is "home"}}
+{{#unless featured}}
+<article class="{{post_class}} box" role="article" itemscope itemtype="http://schema.org/Article">
+    <div class="inner-padding">
+
+        <header>
+            {{#if tags}}
+                <h3 class="post-tags post-meta"> {{!-- post-meta class is necessary for search to work--}}
+                    <span><span>{{tags separator=", "}}</span></span>
+                </h3>
+            {{/if}} {{!-- End of tags --}}
+            <h1 class="post-title" itemprop="headline">
+                <a href="{{url}}" rel="bookmark">{{title}}</a>
+            </h1> {{!-- End of post title --}}
+            {{#if image}}
+                <figure style="background-image:url({{image}})"></figure>
+            {{/if}}
+        </header>{{!-- End of header --}}
+
+        <section itemprop="articleBody">
+            {{content words="100"}}
+            <h3><a class="read-more" href="{{url}}">Continue Reading...</a></h3>
+        </section> {{!-- End of content --}}
+        
+    </div> {{!-- End of inner-padding --}}
+
+    <footer>
+        <div class="group">
+            <time class="left ribbon" itemprop="datePublished" datetime="{{date format="YYYY-MM-DD"}}">
+                <span class="date">{{date format='MMMM DD, YYYY'}} by {{author}}</span>
+            </time> {{!-- End of time/date --}}
+            <nav class="navbar navbar-right socials">
+                <ul>
+                    <li>
+                        <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                        </a>
+                        <a class="fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                        </a>
+                        <a class="fa fa-pinterest-p" href="http://pinterest.com/pin/create/button/?url={{url absolute="true"}}"
+                           onclick="window.open(this.href, 'pinterest-share', 'width=490,height=530');return false;">
+                        </a>
+                    </li>
+                </ul>
+            </nav> {{!-- End of socials --}}
+        </div>
+    </footer> {{!-- End of footer --}}
+</article>
+{{/unless}}
+
+{{else}}
+
+<article class="{{post_class}} box" role="article" itemscope itemtype="http://schema.org/Article">
+    <div class="inner-padding">
+        <header>
+            {{#if tags}}
+                <h3 class="post-tags post-meta"> {{!-- Post meta class is necessary for search to work--}}
+                    <span><span>{{tags separator=", "}}</span></span>
+                </h3>
+            {{/if}} {{!-- End of tags --}}
+            <h1 class="post-title" itemprop="headline">
+                <a href="{{url}}" rel="bookmark">{{title}}</a>
+            </h1> {{!-- End of post title --}}
+            {{#if image}}
+                <figure style="background-image:url({{image}})"></figure>
+            {{/if}}
+        </header>{{!-- End of header --}}
+
+        <section itemprop="articleBody">
+            {{excerpt words="50"}}
+            <h3><a class="read-more" href="{{url}}">Continue Reading...</a></h3>
+        </section> {{!-- End of content --}}
+    </div> {{!-- End of inner-padding --}}
+
+    <footer>
+        <div class="group">
+            <time class="left ribbon" itemprop="datePublished" datetime="{{date format="YYYY-MM-DD"}}">
+                <span class="date">{{date format='MMMM DD, YYYY'}} by {{author}}</span>
+            </time> {{!-- End of time/date --}}
+            <nav class="navbar navbar-right socials">
+                <ul>
+                    <li>
+                        {{!-- <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                            <span class="hidden">Facebook</span>
+                        </a> --}}
+                        <a href="#" data-type="twitter" data-url="{{{url}}}" data-description="{{excerpt characters="140"}}" data-via="{{@blog.title}}" class="prettySocial fa fa-twitter"></a>
+                        <a href="#" data-type="facebook" data-url="{{@blog.url}}" data-title="{{title}}" data-description="{{excerpt characters="140"}}" data-media="{{@blog.url}}{{image}}" class="prettySocial fa fa-facebook"></a>
+                        <a href="#" data-type="facebook" data-url="http://sonnyt.com/prettySocial" data-title="prettySocial - custom social share buttons." data-description="Custom share buttons for Pinterest, Twitter, Facebook and Google Plus." data-media="{{@blog.url}}{{image}}" class="prettySocial fa fa-facebook"></a>
+                    </li>
+                </ul>
+            </nav> {{!-- End of socials --}}
+        </div>
+    </footer> {{!-- End of footer --}}
+</article>
+
+{{/is}}
+{{/foreach}}
+{{!-- Previous/next page links - displayed on every page --}}
+{{#if pagination}}
+    {{{pagination}}}
+{{/if}}
