@@ -1,0 +1,15 @@
+<div class="units-row units-split">
+    {{#foreach posts}}
+        {{#if featured}}
+            <article class="unit-33 text-centered {{post_class}}">
+                <header>
+                    <h4 class="post-title">
+                        <a href="{{url}}">{{title}}</a>
+                    </h4>
+                    <p>{{excerpt words="6"}}</p>
+                </header>
+                <figure style="background-image:url({{image}})"></figure>
+            </article>
+        {{/if}}
+    {{/foreach}}
+</div>{{!-- End of units-row --}}

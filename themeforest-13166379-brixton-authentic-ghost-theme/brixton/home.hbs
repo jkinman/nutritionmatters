@@ -1,0 +1,28 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{> header/header}}
+{{> header/featured}}
+
+<div class="units-row end">
+    <div class="units-container">
+
+        <main class="unit-70" role="main">
+            {{! The section below displays the search results }}
+            <section id="result" class="box inner-padding">
+                <div class="show-result"></div>
+                <i class="fa fa-close"></i>
+            </section>
+            {{! The tag below includes the post loop - partials/loop.hbs }}
+                {{> "loop"}}
+            {{!-- End of post loop --}}
+        </main>
+
+        <aside class="unit-30">
+            {{! The tag below includes the sidebar - partials/sidebar.hbs }}
+            {{> "sidebar"}}
+        </aside>
+
+    </div> {{!-- end of units-container --}}
+    {{> "footer/footer"}}
+</div> {{!-- end of units-row --}}

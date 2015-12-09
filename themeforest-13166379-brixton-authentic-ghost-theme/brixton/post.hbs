@@ -1,0 +1,136 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+{{> header/header}}
+
+<div class="units-row">
+    <div class="units-container">
+        <main class="unit-70" role="main">
+            {{! The section below displays the search results }}
+            <section id="result" class="box inner-padding">
+                <div class="show-result"></div>
+                <i class="fa fa-close"></i>
+            </section>
+            {{! Everything inside the #post tags pulls data from the post }}
+            {{#post}}
+                <article class="{{post_class}} box" role="article" itemscope itemtype="http://schema.org/Article">
+                    <div class="inner-padding">
+
+                        <header>
+                            {{#if tags}}
+                                <h3 class="post-tags post-meta"> {{!-- post-meta class is necessary for search to work--}}
+                                    <span><span>{{tags separator=", "}}</span></span>
+                                </h3>
+                            {{/if}} {{!-- End of tags --}}
+                            <h1 class="post-title" itemprop="headline">
+                                {{title}}
+                            </h1> {{!-- End of post title --}}
+                            {{#if image}}
+                                <figure style="background-image:url({{image}})"></figure>
+                            {{/if}} {{!-- End of post image --}}
+                        </header>{{!-- End of header --}}
+
+                        <section itemprop="articleBody">
+                            {{content}}
+                        </section> {{!-- End of post content --}}
+
+                    </div> <!-- End of inner-padding -->
+
+                    <footer>
+                        <div class="group">
+                            <time class="left ribbon" itemprop="datePublished" datetime="{{date format="YYYY-MM-DD"}}">
+                                <span class="date">{{date format='MMMM DD, YYYY'}} by {{author}}</span>
+                            </time> {{!-- End of time/date --}}
+                            <nav class="navbar navbar-right socials">
+                                <ul>
+                                    <li>
+                                        <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
+                                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                                        </a>
+                                        <a class="fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                                        </a>
+                                        <a class="fa fa-pinterest-p" href="http://pinterest.com/pin/create/button/?url={{url absolute="true"}}"
+                                           onclick="window.open(this.href, 'pinterest-share', 'width=490,height=530');return false;">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav> {{!-- End of socials --}}
+                        </div><!-- End of group -->
+
+                        {{! Everything inside the #author tags pulls data from the author }}
+                        {{#author}}
+                            <div class="inner-padding">
+                                <div class="author-info">
+                                    {{#if image}}
+                                        <figure class="left">
+                                            <img src="{{image}}" />
+                                        </figure>
+                                    {{/if}}
+                                    <section>
+                                        <h5>Written by {{name}}</h5>
+                                        {{#if bio}}
+                                            <p>{{bio}}</p>
+                                        {{/if}}
+                                    </section>
+                                </div>
+                            </div>{{!-- End of inner-padding --}}
+                        {{/author}}
+
+                    </footer>{{!-- End of footer --}}
+
+                </article>{{!-- End of article post --}}
+
+                <ul class="related-posts blocks-3 box inner-padding blocks-mobile-33">
+                    <h2 class="post-title">Related Posts</h2>
+                </ul> {{!-- End of related posts --}}
+
+                <div class="comments box">
+                    <div id="disqus_thread" class="inner-padding"></div>
+                    <script type="text/javascript">
+                        var disqus_shortname = 'yourDisqusUsername'; // required: replace example with your forum shortname
+                        var disqus_identifier = '{{post.id}}'; // make sure to use the post.id as an identifier, otherwise disqus will use the pages url per default, which might be problematic...
+
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div> {{!-- End of disquss comments --}}
+
+                <div class="units-row units-split post-navigation box">
+                    <div class="unit-50">
+                        {{#prev_post}}
+                            <a class="prev-post" href="{{url}}">
+                                <span> &laquo; Previous post</span>
+                                <h4>{{title}}</h4>
+                            </a>
+                        {{/prev_post}}
+                    </div> {{!-- End of previous post --}}
+
+                    <div class="unit-50">
+                        {{#next_post}}
+                            <a class="next-post" href="{{url}}">
+                                <span>Next post &raquo; </span>
+                                <h4>{{title}}</h4>
+                            </a>
+                        {{/next_post}}
+                    </div> {{!-- End of next post --}}
+                </div> {{!-- End of units-row --}}
+
+            {{/post}}
+
+        </main>{{!-- End of main content --}}
+
+        <aside class="unit-30">
+            {{! The tag below includes the sidebar - partials/sidebar.hbs }}
+            {{> "sidebar"}}
+        </aside>{{!-- End of sidebar --}}
+
+    </div> {{!-- end of units-container --}}
+</div> {{!-- end of units-row --}}
+{{> footer/footer}}

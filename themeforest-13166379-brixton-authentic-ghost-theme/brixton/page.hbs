@@ -1,0 +1,31 @@
+{{!< default}}
+
+{{! This is a page template. A page outputs content just like any other post, and has all the same
+    attributes by default, but you can also customise it to behave differently if you prefer. }}
+{{> header/header}}
+
+<div class="units-row">
+    <div class="units-container">
+        <main role="main">
+        {{! Everything inside the #post tags pulls data from the page }}
+        {{#post}}
+
+            <article class="{{post_class}} inner-padding box">
+
+                <header>
+                    <h2 class="post-title" itemprop="headline">
+                        {{title}}
+                    </h2> {{!-- End of post title --}}
+                </header> {{!-- End of header --}}
+
+                <section itemprop="articleBody">
+                    {{content}}
+                </section> {{!-- End of content --}}
+
+            </article> {{!-- End of post article --}}
+
+        {{/post}} {{!-- End of post loop --}}
+    </main> {{!-- End of main --}}
+    </div> {{!-- End of units-container --}}
+</div> {{!-- End of units-row --}}
+{{> footer/footer}}

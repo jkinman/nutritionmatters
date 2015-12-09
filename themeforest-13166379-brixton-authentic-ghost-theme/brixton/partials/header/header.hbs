@@ -1,0 +1,22 @@
+<header>
+    {{! The tag below includes the top-bar navigation - partials/top-bar.hbs }}
+    {{> header/top-bar}}
+    {{#is "home"}}
+        <div class="units-row logo end">
+    {{else}}
+        <div class="units-row logo">
+    {{/is}}
+        {{#if @blog.logo}}
+            <a href="{{@blog.url}}">
+                <img src="{{@blog.logo}}" alt="{{@blog.title}}" />
+            </a> {{!-- End of logo as image --}}
+            {{else}}
+            <a href="{{@blog.url}}">
+                {{@blog.title}}
+            </a> {{!-- End of logo as text --}}
+        {{/if}}
+        <h1 class="blog-description">
+            <span><span>{{@blog.description}}</span></span>
+        </h1> {{!-- End of description --}}
+    </div>{{!-- End of units-row --}}
+</header>{{!-- End of header --}}
