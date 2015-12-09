@@ -1,0 +1,21 @@
+<div class="units-row units-split post-navigation box">
+    <div class="unit-40">
+        {{#if next}}
+            <a class="prev-post" href="{{page_url next}}">
+                <span> &laquo; Older posts</span>
+            </a>
+        {{else}}
+            &nbsp;
+        {{/if}}
+    </div> {{!-- End of next post --}}
+    <div class="unit-20">
+        <div class="page-number">Page {{page}} of {{pages}}</div>
+    </div>
+    <div class="unit-40">
+        {{#if prev}}
+            <a class="next-post" href="{{page_url prev}}">
+                <span> Newer Posts &raquo; </span>
+            </a>
+        {{/if}}
+    </div> {{!-- End of prev post --}}
+</div>

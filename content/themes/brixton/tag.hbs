@@ -1,0 +1,22 @@
+{{!< default}}
+{{> header/header}}
+<div class="units-row author-tag">
+    <div class="units-container">
+        <main class="unit-70 box">
+            <div class="left ribbon">
+                <h3 class="ribbon-title"><i class="fa fa-tags"></i>Posts with tag: {{tag.name}}</h3>
+            </div> {{!-- End of ribbon / posts with tag --}}
+        <div class="inner-padding">
+            {{#foreach posts}}
+                <h2 class="post-title"><a href="{{url}}">- {{{title}}}</a></h2>
+                {{!-- {{content words="30"}} --}}
+            {{/foreach}}
+        </div>
+    </main>{{!-- End of main content --}}
+    <aside class="unit-30">
+        {{! The tag below includes the sidebar - partials/sidebar.hbs }}
+        {{> "sidebar"}}
+    </aside>{{!-- End of sidebar --}}
+    </div>{{!-- End of units-container --}}
+</div>{{!-- End of units-row --}}
+{{> footer/footer}}
