@@ -71,3 +71,12 @@ If you have problems using your instance of Ghost, you should check the [officia
 ## License
 
 Released under the [MIT license](./LICENSE), just like the Ghost project itself.
+
+
+
+CLIENT INFO
+CLIENT ID	567e277c603c4633a1c099a4c29dcc46
+CLIENT SECRET	766b4e6f37364bd0b9e9d77ea69ed9e4
+WEBSITE URL	https://nutritionmatters.herokuapp.com/
+REDIRECT URI	https://nutritionmatters.herokuapp.com/
+SUPPORT EMAIL	rhiannoncarpentier@gmail.com
